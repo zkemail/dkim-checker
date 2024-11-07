@@ -1,6 +1,6 @@
-# Server Application
+# DKIM Registry Checker
 
-This project is a server application built with Node.js and TypeScript. Follow the steps below to build and run the application using Docker.
+This project checks the validity of DKIMs registered in the DKIM registry contract. Follow the steps below to build and run the application using Docker.
 
 ## Prerequisites
 
@@ -33,6 +33,17 @@ This project is a server application built with Node.js and TypeScript. Follow t
    ```bash
    yarn start
    ```
+## WebSocket Notifications
+
+The application listens on port 8080 and provides WebSocket functionality for receiving real-time notifications about DKIM registry updates. You can connect to the WebSocket endpoint at `ws://localhost:8080` to receive these notifications.
+
+A sample client implementation is provided in `client.html` which demonstrates how to connect to the WebSocket server and handle notifications. You can use this as a reference for implementing your own client.
+
+Example usage of the sample client:
+
+1. Start the application
+2. Open `client.html` in a web browser
+3. The client will automatically connect to the WebSocket server and display notifications as they arrive
 
 ## Setup Using Docker
 
@@ -55,13 +66,13 @@ This project is a server application built with Node.js and TypeScript. Follow t
 1. Start the container using the built image with environment variables.
 
    ```bash
-   docker run -e WEBSOCKET_PROVIDER_URL=wss://zksync-sepolia.g.alchemy.com/v2/mmChuLGSsbfFHWnY3FNu7nElGZLiNMSc -e CONTRACT_ADDRESS=0x0D269D8A1e0B0815bCBe4953E560993F1f391a6E -p 8000:8000 dkim-checker
+   docker run -e WEBSOCKET_PROVIDER_URL=wss://zksync-sepolia.g.alchemy.com/v2/mmChuLGSsbfFHWnY3FNu7nElGZLiNMSc -e CONTRACT_ADDRESS=0x0D269D8A1e0B0815bCBe4953E560993F1f391a6E -p 8080:8080 dkim-checker
    ```
 
    To use the x86 image with environment variables, use the following command.
 
    ```bash
-   docker run -e WEBSOCKET_PROVIDER_URL=wss://zksync-sepolia.g.alchemy.com/v2/mmChuLGSsbfFHWnY3FNu7nElGZLiNMSc -e CONTRACT_ADDRESS=0x0D269D8A1e0B0815bCBe4953E560993F1f391a6E -p 8000:8000 dkim-checker-x86
+   docker run -e WEBSOCKET_PROVIDER_URL=wss://zksync-sepolia.g.alchemy.com/v2/mmChuLGSsbfFHWnY3FNu7nElGZLiNMSc -e CONTRACT_ADDRESS=0x0D269D8A1e0B0815bCBe4953E560993F1f391a6E -p 8080:8080 dkim-checker-x86
    ```
 
 ## Notes
