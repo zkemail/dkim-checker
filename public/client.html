@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DKIM Key Event Monitor</title>
+</head>
+<body>
+  <h1>DKIM Key Event Monitor</h1>
+  <ul id="events"></ul>
+
+  <script>
+    const ws = new WebSocket('ws://localhost:8080');
+
+    ws.onmessage = (event) => {
+      const eventsList = document.getElementById('events');
+      const newEvent = document.createElement('li');
+      newEvent.textContent = event.data;
+      eventsList.appendChild(newEvent);
+    };
+
+    ws.onopen = () => {
+      console.log('WebSocket connection established');
+    };
+
+    ws.onclose = () => {
+      console.log('WebSocket connection closed');
+    };
+  </script>
+</body>
+</html>
