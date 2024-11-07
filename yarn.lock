@@ -132,6 +132,10 @@ node-forge@^1.3.1:
   resolved "https://registry.npmjs.org/node-forge/-/node-forge-1.3.1.tgz"
   integrity sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==
 
+"poseidon-rs@git+ssh://git@github.com/zkemail/poseidon-rs.git#feat/for-dkim-checker":
+  version "0.0.0"
+  resolved "git+ssh://git@github.com/zkemail/poseidon-rs.git#822260d83d8145aa2957932e61aa4614c184e4f4"
+
 proxy-from-env@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
